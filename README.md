@@ -18,26 +18,34 @@ cd testOneDatatec
 ```bash
 docker run --rm \
     -u "$(id -u):$(id -g)" \
-    -v $(pwd):/var/www/html \
+    -v "$(pwd):/var/www/html" \
     -w /var/www/html \
     laravelsail/php83-composer:latest \
-    composer install
+    composer install --ignore-platform-reqs
 ```
 
 3. Configure your `.env` file with your database settings,  
    or simple copy `.env.example -> .env`
-
+```bash
+cp .env.example .env
+```
 
 4. Run migrations:
 
 ```bash
-php artisan migrate
+./vendor/bin/sail up -d
+```
+
+4. Run migrations:
+
+```bash
+./vendor/bin/sail artisan migrate
 ```
 
 5. Start the queue worker:
 
 ```bash
-php artisan queue:work
+./vendor/bin/sail artisan queue:work
 ```
 
 ### Testing the API
@@ -57,5 +65,5 @@ Send a POST request to `/api/submit` with the following JSON payload:
 Run the tests:
 
 ```bash
- php artisan test
- ```
+./vendor/bin/sail artisan test
+```

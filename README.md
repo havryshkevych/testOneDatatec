@@ -30,19 +30,25 @@ docker run --rm \
 cp .env.example .env
 ```
 
-4. Run migrations:
+4. Run application:
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-4. Run migrations:
+5. Generate app key:
+
+```bash
+./vendor/bin/sail artisan key:generate
+```
+
+6. Run migrations:
 
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-5. Start the queue worker:
+7. Start the queue worker:
 
 ```bash
 ./vendor/bin/sail artisan queue:work
@@ -67,3 +73,11 @@ Run the tests:
 ```bash
 ./vendor/bin/sail artisan test
 ```
+
+### Check logs
+
+You can check logs after run test cases:
+
+```bash 
+tail storage/logs/laravel.log
+``` 

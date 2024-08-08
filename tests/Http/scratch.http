@@ -1,0 +1,11 @@
+### POST request to example server
+POST http://localhost/api/submit
+Content-Type: application/json
+
+{
+  "name": "John Doe2",
+  "email": "john.doe2@example.com",
+  "message": "This is a test message."
+}
+
+###
